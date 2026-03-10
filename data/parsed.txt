@@ -1,0 +1,832 @@
+Запрос 1: Найди все из таблица соединяя с вторая и четвертая где слово == другое, количество >= 4 или цена < 10 сгруппировать по слово сортируя по цена в порядке возрастания, количество ограничиваясь 5
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "найди"
+  },
+  "columns": {
+    "type": "quantifier",
+    "value": "все"
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "таблица"
+      },
+      "table_extension": {
+        "type": "table_extension",
+        "join_word": {
+          "type": "join_word",
+          "value": "соединяя с"
+        },
+        "tables": {
+          "type": "tables",
+          "table_name": {
+            "type": "table_name",
+            "value": "вторая"
+          },
+          "table_extension": {
+            "type": "table_extension",
+            "join_word": {
+              "type": "join_word",
+              "and_connector": {
+                "type": "and_connector",
+                "value": "и"
+              }
+            },
+            "tables": {
+              "type": "tables",
+              "table_name": {
+                "type": "table_name",
+                "value": "четвертая"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "where": {
+    "type": "where",
+    "where_word": {
+      "type": "where_word",
+      "value": "где"
+    },
+    "conditions": {
+      "type": "conditions",
+      "column_name": {
+        "type": "column_name",
+        "value": "слово"
+      },
+      "comparison": {
+        "type": "comparison",
+        "value": "=="
+      },
+      "right_condition": {
+        "type": "right_condition",
+        "value": {
+          "type": "column_name",
+          "value": "другое"
+        }
+      },
+      "condition_extension": {
+        "type": "condition_extension",
+        "connector": {
+          "type": "connector",
+          "value": ","
+        },
+        "conditions": {
+          "type": "conditions",
+          "column_name": {
+            "type": "column_name",
+            "value": "количество"
+          },
+          "comparison": {
+            "type": "comparison",
+            "value": ">="
+          },
+          "right_condition": {
+            "type": "right_condition",
+            "value": {
+              "type": "number",
+              "value": "4"
+            }
+          },
+          "condition_extension": {
+            "type": "condition_extension",
+            "connector": {
+              "type": "connector",
+              "value": "или"
+            },
+            "conditions": {
+              "type": "conditions",
+              "column_name": {
+                "type": "column_name",
+                "value": "цена"
+              },
+              "comparison": {
+                "type": "comparison",
+                "value": "<"
+              },
+              "right_condition": {
+                "type": "right_condition",
+                "value": {
+                  "type": "number",
+                  "value": "10"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "group_by": {
+    "type": "group_by",
+    "group_word": {
+      "type": "group_word",
+      "value": "сгруппировать по"
+    },
+    "group_columns": {
+      "type": "group_extension",
+      "column_name": {
+        "type": "column_name",
+        "value": "слово"
+      }
+    }
+  },
+  "order": {
+    "type": "order_word",
+    "order_word": {
+      "type": "order_word",
+      "value": "сортируя по"
+    },
+    "order_columns": {
+      "type": "order_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "цена"
+      },
+      "indicator": {
+        "type": "indicator",
+        "order_pointer": {
+          "type": "order_pointer",
+          "value": "в порядке"
+        },
+        "desc_any": {
+          "type": "desc_any",
+          "value": "возрастания"
+        }
+      },
+      "order_extension": {
+        "type": "order_extension",
+        "and_connector": {
+          "type": "and_connector",
+          "value": ","
+        },
+        "order_columns": {
+          "type": "order_columns",
+          "column_name": {
+            "type": "column_name",
+            "value": "количество"
+          }
+        }
+      }
+    }
+  },
+  "limit": {
+    "type": "limit",
+    "limit_word": {
+      "type": "limit_word",
+      "value": "ограничиваясь"
+    },
+    "number": {
+      "type": "number",
+      "value": "5"
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 2: Покажи строка, колонка; столбец из таблицы
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "покажи"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "строка"
+      },
+      "column_extension": {
+        "type": "column_extension",
+        "separator": {
+          "type": "separator",
+          "value": ","
+        },
+        "name_columns": {
+          "type": "name_columns",
+          "column_name": {
+            "type": "column_name",
+            "value": "колонка"
+          },
+          "column_extension": {
+            "type": "column_extension",
+            "separator": {
+              "type": "separator",
+              "value": ";"
+            },
+            "name_columns": {
+              "type": "name_columns",
+              "column_name": {
+                "type": "column_name",
+                "value": "столбец"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "таблицы"
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 3: Покажешь ночь, день из табличка вместе с другая где число == 24
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "покажешь"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "ночь"
+      },
+      "column_extension": {
+        "type": "column_extension",
+        "separator": {
+          "type": "separator",
+          "value": ","
+        },
+        "name_columns": {
+          "type": "name_columns",
+          "column_name": {
+            "type": "column_name",
+            "value": "день"
+          }
+        }
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "табличка"
+      },
+      "table_extension": {
+        "type": "table_extension",
+        "join_word": {
+          "type": "join_word",
+          "value": "вместе с"
+        },
+        "tables": {
+          "type": "tables",
+          "table_name": {
+            "type": "table_name",
+            "value": "другая"
+          }
+        }
+      }
+    }
+  },
+  "where": {
+    "type": "where",
+    "where_word": {
+      "type": "where_word",
+      "value": "где"
+    },
+    "conditions": {
+      "type": "conditions",
+      "column_name": {
+        "type": "column_name",
+        "value": "число"
+      },
+      "comparison": {
+        "type": "comparison",
+        "value": "=="
+      },
+      "right_condition": {
+        "type": "right_condition",
+        "value": {
+          "type": "number",
+          "value": "24"
+        }
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 4: Выведи всё из вода соединяя с огонь и пламя первые 100
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "выведи"
+  },
+  "columns": {
+    "type": "quantifier",
+    "value": "всё"
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "вода"
+      },
+      "table_extension": {
+        "type": "table_extension",
+        "join_word": {
+          "type": "join_word",
+          "value": "соединяя с"
+        },
+        "tables": {
+          "type": "tables",
+          "table_name": {
+            "type": "table_name",
+            "value": "огонь"
+          },
+          "table_extension": {
+            "type": "table_extension",
+            "join_word": {
+              "type": "join_word",
+              "and_connector": {
+                "type": "and_connector",
+                "value": "и"
+              }
+            },
+            "tables": {
+              "type": "tables",
+              "table_name": {
+                "type": "table_name",
+                "value": "пламя"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "limit": {
+    "type": "limit",
+    "limit_word": {
+      "type": "limit_word",
+      "value": "первые"
+    },
+    "number": {
+      "type": "number",
+      "value": "100"
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 5: Найти месяц из лето; осень вместе с зима, весна группировать по месяц, день сортируя по месяц
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "найти"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "месяц"
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "лето"
+      },
+      "table_extension": {
+        "type": "table_extension",
+        "join_word": {
+          "type": "join_word",
+          "and_connector": {
+            "type": "and_connector",
+            "value": ";"
+          }
+        },
+        "tables": {
+          "type": "tables",
+          "table_name": {
+            "type": "table_name",
+            "value": "осень"
+          },
+          "table_extension": {
+            "type": "table_extension",
+            "join_word": {
+              "type": "join_word",
+              "value": "вместе с"
+            },
+            "tables": {
+              "type": "tables",
+              "table_name": {
+                "type": "table_name",
+                "value": "зима"
+              },
+              "table_extension": {
+                "type": "table_extension",
+                "join_word": {
+                  "type": "join_word",
+                  "and_connector": {
+                    "type": "and_connector",
+                    "value": ","
+                  }
+                },
+                "tables": {
+                  "type": "tables",
+                  "table_name": {
+                    "type": "table_name",
+                    "value": "весна"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "group_by": {
+    "type": "group_by",
+    "group_word": {
+      "type": "group_word",
+      "value": "группировать по"
+    },
+    "group_columns": {
+      "type": "group_extension",
+      "column_name": {
+        "type": "column_name",
+        "value": "месяц"
+      },
+      "group_extension": {
+        "type": "group_extension",
+        "and_connector": {
+          "type": "and_connector",
+          "value": ","
+        },
+        "group_columns": {
+          "type": "group_extension",
+          "column_name": {
+            "type": "column_name",
+            "value": "день"
+          }
+        }
+      }
+    }
+  },
+  "order": {
+    "type": "order_word",
+    "order_word": {
+      "type": "order_word",
+      "value": "сортируя по"
+    },
+    "order_columns": {
+      "type": "order_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "месяц"
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 6: Вывести дом; колдун из киш где исполнитель == горшок сортировать по дом
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "вывести"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "дом"
+      },
+      "column_extension": {
+        "type": "column_extension",
+        "separator": {
+          "type": "separator",
+          "value": ";"
+        },
+        "name_columns": {
+          "type": "name_columns",
+          "column_name": {
+            "type": "column_name",
+            "value": "колдун"
+          }
+        }
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "киш"
+      }
+    }
+  },
+  "where": {
+    "type": "where",
+    "where_word": {
+      "type": "where_word",
+      "value": "где"
+    },
+    "conditions": {
+      "type": "conditions",
+      "column_name": {
+        "type": "column_name",
+        "value": "исполнитель"
+      },
+      "comparison": {
+        "type": "comparison",
+        "value": "=="
+      },
+      "right_condition": {
+        "type": "right_condition",
+        "value": {
+          "type": "column_name",
+          "value": "горшок"
+        }
+      }
+    }
+  },
+  "order": {
+    "type": "order_word",
+    "order_word": {
+      "type": "order_word",
+      "value": "сортировать по"
+    },
+    "order_columns": {
+      "type": "order_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "дом"
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 7: найдешь дом_степана из карта_города сгруппируешь по улица_1 сортируя по почтовый_индекс
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "найдешь"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "дом_степана"
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "карта_города"
+      }
+    }
+  },
+  "group_by": {
+    "type": "group_by",
+    "group_word": {
+      "type": "group_word",
+      "value": "сгруппируешь по"
+    },
+    "group_columns": {
+      "type": "group_extension",
+      "column_name": {
+        "type": "column_name",
+        "value": "улица_1"
+      }
+    }
+  },
+  "order": {
+    "type": "order_word",
+    "order_word": {
+      "type": "order_word",
+      "value": "сортируя по"
+    },
+    "order_columns": {
+      "type": "order_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "почтовый_индекс"
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 8: Выведи дом из города
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "выведи"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "дом"
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "города"
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 9: выведи дом1 из города где карта == гугл_мапс также самолет == железная_птица
+Дерево разбора:
+{
+  "type": "query",
+  "select_word": {
+    "type": "select_word",
+    "value": "выведи"
+  },
+  "columns": {
+    "type": "columns",
+    "value": {
+      "type": "name_columns",
+      "column_name": {
+        "type": "column_name",
+        "value": "дом1"
+      }
+    }
+  },
+  "from": {
+    "type": "from",
+    "from_word": {
+      "type": "from_word",
+      "value": "из"
+    },
+    "tables": {
+      "type": "tables",
+      "table_name": {
+        "type": "table_name",
+        "value": "города"
+      }
+    }
+  },
+  "where": {
+    "type": "where",
+    "where_word": {
+      "type": "where_word",
+      "value": "где"
+    },
+    "conditions": {
+      "type": "conditions",
+      "column_name": {
+        "type": "column_name",
+        "value": "карта"
+      },
+      "comparison": {
+        "type": "comparison",
+        "value": "=="
+      },
+      "right_condition": {
+        "type": "right_condition",
+        "value": {
+          "type": "column_name",
+          "value": "гугл_мапс"
+        }
+      },
+      "condition_extension": {
+        "type": "condition_extension",
+        "connector": {
+          "type": "connector",
+          "value": "также"
+        },
+        "conditions": {
+          "type": "conditions",
+          "column_name": {
+            "type": "column_name",
+            "value": "самолет"
+          },
+          "comparison": {
+            "type": "comparison",
+            "value": "=="
+          },
+          "right_condition": {
+            "type": "right_condition",
+            "value": {
+              "type": "column_name",
+              "value": "железная_птица"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+------------------------------------------------------------
+Запрос 11: Вывести дом
+Результат: ОШИБКА
+Детали: Ожидалось: FROM_WORD, полученно: Конец строки
+------------------------------------------------------------
+Запрос 12: Выведи дом из города где король
+Результат: ОШИБКА
+Детали: Ожидалось: COMPARISON, полученно: Конец строки
+------------------------------------------------------------
+Запрос 13: Найди все из всего группируя по цене сортируя
+Результат: ОШИБКА
+Детали: Лишние токены в конце
+------------------------------------------------------------
+Запрос 14: Сгруппируй дом из города
+Результат: ОШИБКА
+Детали: Ожидалось: SELECT_WORD, полученно: сгруппируй
+------------------------------------------------------------
+Запрос 15: Найдешь все, ничего из пустоты группировать по бездне или матрице
+Результат: ОШИБКА
+Детали: Ожидалось: FROM_WORD, полученно: ,
+------------------------------------------------------------
+Запрос 16: Найдешь все из пустоты группировать по бездне или матрице
+Результат: ОШИБКА
+Детали: Лишние токены в конце
+------------------------------------------------------------
